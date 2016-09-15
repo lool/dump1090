@@ -39,6 +39,12 @@ endif
 
 all: dump1090 view1090
 
+.PHONY: install
+DESTDIR := /usr/local
+install: all
+	install -D dump1090 $(DESTDIR)/sbin
+	install -D view1090 $(DESTDIR)/sbin
+
 %.o: %.c *.h
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXTRACFLAGS) -c $< -o $@
 
