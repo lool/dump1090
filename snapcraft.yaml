@@ -1,0 +1,12 @@
+name: dump1090
+version: 0
+summary: ADS-B dumper and viewer
+description: View flights in your area with a cheap RTL-SDR dongle
+confinement: devmode
+grade: devel
+
+parts:
+    dump1090:
+        plugin: make
+        build-packages: [pkg-config, librtlsdr-dev]
+        source: .
