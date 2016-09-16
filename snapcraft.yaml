@@ -7,14 +7,13 @@ grade: devel
 
 apps:
   dump1090:
-    command: dump1090-service
+    command: wrappers/dump1090
     daemon: simple
     plugs:
       - network
       - network-bind
   view1090:
-    command: view1090-service
-    daemon: simple
+    command: wrappers/view1090
     plugs:
       - network
       - network-bind
@@ -30,7 +29,7 @@ parts:
     plugin: dump
     source: .
     filesets:
-      services: [dump1090-service, view1090-service]
+      services: [wrappers/dump1090, wrappers/view1090]
     stage: [$services]
     snap: [$services]
 

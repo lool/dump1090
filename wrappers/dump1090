@@ -2,11 +2,15 @@
 
 set -e -x
 
-DUMP_ARGS="--net"
+JSON_DIR="$SNAP_DATA/json/"
+
+DUMP_ARGS="--net --write-json $JSON_DIR"
 
 DEFAULTS="$SNAP_COMMON/defaults"
 if [ -r "$DEFAULTS" ]; then
     . "$DEFAULTS"
 fi
+
+mkdir -p "$JSON_DIR"
 
 exec "$SNAP/sbin/dump1090" $DUMP_ARGS
