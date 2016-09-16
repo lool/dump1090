@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e -x
+
+VIEW_ARGS=""
+
+DEFAULTS="$SNAP_COMMON/defaults"
+if [ -r "$DEFAULTS" ]; then
+    . "$DEFAULTS"
+fi
+
+exec "$SNAP/sbin/view1090" $VIEW_ARGS
