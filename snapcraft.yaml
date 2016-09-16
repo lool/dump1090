@@ -5,8 +5,25 @@ description: View flights in your area with a cheap RTL-SDR dongle
 confinement: devmode
 grade: devel
 
+apps:
+  dump1090:
+    command: sbin/dump1090
+    daemon: simple
+    plugs:
+      - network
+      - network-bind
+  view1090:
+    command: sbin/view1090
+    daemon: simple
+    plugs:
+      - network
+      - network-bind
+
+
 parts:
-    dump1090:
-        plugin: make
-        build-packages: [pkg-config, librtlsdr-dev]
-        source: .
+  dump1090:
+    plugin: make
+    build-packages: [pkg-config, librtlsdr-dev]
+    stage-packages: [librtlsdr0]
+    source: .
+
