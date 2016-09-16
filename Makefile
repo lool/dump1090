@@ -14,7 +14,7 @@ SHAREDIR=$(PREFIX)/share/$(PROGNAME)
 EXTRACFLAGS=-DHTMLPATH=\"$(SHAREDIR)\"
 endif
 
-CPPFLAGS+=-DMODES_DUMP1090_VERSION=\"$(DUMP1090_VERSION)\"
+CPPFLAGS+=-DMODES_DUMP1090_VERSION=\"$(DUMP1090_VERSION)\" -DENABLE_WEBSERVER
 CFLAGS+=-O2 -g -Wall -Werror -W
 LIBS=-lpthread -lm
 LIBS_RTL=`pkg-config --libs librtlsdr libusb-1.0`
@@ -43,6 +43,7 @@ all: dump1090 view1090
 DESTDIR := /usr/local
 install: all
 	install -D -t $(DESTDIR)/sbin dump1090 view1090
+	cp -a public_html $(DESTDIR)
 
 %.o: %.c *.h
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXTRACFLAGS) -c $< -o $@
