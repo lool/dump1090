@@ -12,6 +12,9 @@ apps:
     plugs:
       - network
       - network-bind
+  webserver:
+    command: bin/webserver
+    daemon: simple
   view1090:
     command: wrappers/view1090
     plugs:
@@ -25,6 +28,9 @@ parts:
     build-packages: [pkg-config, librtlsdr-dev]
     stage-packages: [librtlsdr0]
     source: .
+  webserver:
+    plugin: go
+    source: webserver
   wrappers:
     plugin: dump
     source: .
