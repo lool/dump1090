@@ -42,7 +42,7 @@ all: dump1090 view1090
 .PHONY: install
 DESTDIR := /usr/local
 install: all
-	install -D dump1090 view1090 $(DESTDIR)/sbin/
+	install -D -t $(DESTDIR)/sbin dump1090 view1090
 
 %.o: %.c *.h
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXTRACFLAGS) -c $< -o $@
